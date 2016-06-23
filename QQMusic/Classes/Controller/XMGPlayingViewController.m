@@ -316,7 +316,25 @@
 }
 
 #pragma mark - 设置锁屏界面的信息
-/*
+//歌名
+// MPMediaItemPropertyAlbumTitle
+//声道个数
+// MPMediaItemPropertyAlbumTrackCount
+//左右声道
+// MPMediaItemPropertyAlbumTrackNumber
+//歌手名
+// MPMediaItemPropertyArtist
+//在锁屏界面的封面
+// MPMediaItemPropertyArtwork
+//
+// MPMediaItemPropertyComposer
+// MPMediaItemPropertyDiscCount
+// MPMediaItemPropertyDiscNumber
+// MPMediaItemPropertyGenre
+// MPMediaItemPropertyPersistentID
+//设置总时长
+// MPMediaItemPropertyPlaybackDuration
+// MPMediaItemPropertyTitle
 - (void)setupLockScreenInfo
 {
     // 0.获取当前正在播放的歌曲
@@ -327,7 +345,9 @@
     
     // 2.设置展示的信息
     NSMutableDictionary *playingInfo = [NSMutableDictionary dictionary];
+// 设置歌曲名称
     [playingInfo setObject:playingMusic.name forKey:MPMediaItemPropertyAlbumTitle];
+// 设置歌手
     [playingInfo setObject:playingMusic.singer forKey:MPMediaItemPropertyArtist];
     MPMediaItemArtwork *artWork = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:playingMusic.icon]];
     [playingInfo setObject:artWork forKey:MPMediaItemPropertyArtwork];
@@ -338,9 +358,9 @@
     // 3.让应用程序可以接受远程事件
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 }
- */
+ 
 
-// 监听远程事件
+// 监听远程事件（如：在锁屏状态下点击下一首）
 - (void)remoteControlReceivedWithEvent:(UIEvent *)event
 {
     switch (event.subtype) {
